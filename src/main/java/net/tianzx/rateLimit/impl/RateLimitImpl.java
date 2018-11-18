@@ -9,7 +9,7 @@ public class RateLimitImpl implements RateLimit {
 
     @Override
     public void setQPS(int qps) {
-        if(qps <1 || qps >1_000){
+        if (qps < 1 || qps > 1_000) {
             throw new RuntimeException();
         }
         this.qps = qps;
@@ -18,15 +18,15 @@ public class RateLimitImpl implements RateLimit {
 
     @Override
     public boolean allowThisRequest() {
-        long currentTime  =  System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis();
         if (time == -1) {
             time = currentTime;
             return true;
-        }else {
+        } else {
             long result = currentTime - time;
             if (result < qpsMillis) {
                 return false;
-            }else {
+            } else {
                 time = currentTime;
                 return true;
             }
