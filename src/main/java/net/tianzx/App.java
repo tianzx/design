@@ -5,6 +5,6 @@ package net.tianzx;
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello 中国!");
+        System.err.println("Hello 中国!");
     }
 }
