@@ -3,6 +3,7 @@ package net.tianzx.rateLimit.impl;
 import net.tianzx.rateLimit.RateLimit;
 
 public class RateLimitImpl implements RateLimit {
+
     long time = -1;
     int qps;
     long qpsMillis;
