@@ -8,6 +8,7 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import net.tianzx.netty.handler.DefaultHandler;
 import net.tianzx.netty.handler.InflightResender;
 
 import java.util.concurrent.TimeUnit;
@@ -32,7 +33,8 @@ public class Server {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             ChannelPipeline p = socketChannel.pipeline();
-                            p .addFirst("inflightResender", new InflightResender(5_000, TimeUnit.MILLISECONDS));
+                            p.addFirst("inflightResender", new InflightResender(5_000, TimeUnit.MILLISECONDS));
+                            p.addLast("defaultHandler",new DefaultHandler());
                         }
                     });
 

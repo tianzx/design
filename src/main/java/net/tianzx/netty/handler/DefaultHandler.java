@@ -29,10 +29,10 @@ public class DefaultHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) {
-//        if (evt instanceof InflightResender.ResendNotAckedPublishes) {
-//            final MQTTConnection mqttConnection = mqttConnection(ctx.channel());
-//            mqttConnection.resendNotAckedPublishes();
-//        }
+        if (evt instanceof InflightResender.ResendNotAckedPublishes) {
+          Long time = System.currentTimeMillis();
+          System.err.println(time);
+        }
         ctx.fireUserEventTriggered(evt);
     }
 
