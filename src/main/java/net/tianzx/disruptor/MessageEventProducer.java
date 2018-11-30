@@ -29,6 +29,10 @@ public class MessageEventProducer {
                 ringBuffer.publish(sequence);
             }
             i++;
+            System.err.println("send ..." +i);
+            if (i==1_000) {
+                return;
+            }
         }
 
     }

@@ -40,6 +40,7 @@ public class InflightResender extends ChannelDuplexHandler {
             // and initialization will occur there.
         }
     }
+
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         destroy();
@@ -53,6 +54,7 @@ public class InflightResender extends ChannelDuplexHandler {
         }
         super.channelRegistered(ctx);
     }
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // This method will be invoked only if this handler was added
@@ -67,6 +69,7 @@ public class InflightResender extends ChannelDuplexHandler {
         destroy();
         super.channelInactive(ctx);
     }
+
     private void initialize(ChannelHandlerContext ctx) {
         // Avoid the case where destroy() is called before scheduling timeouts.
         // See: https://github.com/netty/netty/issues/143
@@ -94,8 +97,11 @@ public class InflightResender extends ChannelDuplexHandler {
         }
     }
 
-
-    private void resendNotAcked(ChannelHandlerContext ctx/* , IdleStateEvent evt */) {
+    /**
+     *
+     * @param ctx
+     */
+    private void resendNotAcked(ChannelHandlerContext ctx) {
         ctx.fireUserEventTriggered(new ResendNotAckedPublishes());
     }
 
@@ -115,11 +121,11 @@ public class InflightResender extends ChannelDuplexHandler {
             if (nextDelay <= 0) {
                 resenderTimeout = ctx.executor().schedule(this, resenderTimeNanos, TimeUnit.NANOSECONDS);
                 try {
-                    resendNotAcked(ctx/* , event */);
+                    resendNotAcked(ctx);
                 } catch (Throwable t) {
                     ctx.fireExceptionCaught(t);
                 }
-            }else{
+            } else {
                 resenderTimeout = ctx.executor().schedule(this, nextDelay, TimeUnit.NANOSECONDS);
             }
         }

@@ -19,7 +19,7 @@ public class Boot {
         Executor service = new ThreadPoolExecutor(1, 10, 30, TimeUnit.SECONDS,
                 new ArrayBlockingQueue<Runnable>(100));
 
-        int bufferSize = 1024;
+        int bufferSize = 16;
         Disruptor<MessageEvent> disruptor = new Disruptor<MessageEvent>(MessageEvent::new, bufferSize, service);
 //        disruptor.handleEventsWith((event, sequence, endOfBatch) -> System.out.println("Event: " + event));
         disruptor.handleEventsWith(new MessageEventHandler());

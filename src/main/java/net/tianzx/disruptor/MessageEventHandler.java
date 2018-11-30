@@ -11,6 +11,8 @@ public class MessageEventHandler implements EventHandler<MessageEvent> {
 
     @Override
     public void onEvent(MessageEvent event, long sequence, boolean endOfBatch) throws Exception {
-        System.out.println("Event: " + event.getMessage().getId());
+//        System.out.println("Event: " + event.getMessage().getId());
+        System.out.println(event.getMessage().getId());
+
     }
 }
