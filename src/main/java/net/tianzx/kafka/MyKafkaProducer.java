@@ -64,6 +64,10 @@ public class MyKafkaProducer {
             ProducerRecord pr = new ProducerRecord(topicName, startTime, value.getBytes());
             LOGGER.info("record producer send time {}", startTime);
             Future<RecordMetadata> future = producer.send(pr, (recordMetadata, e) -> {
+                long midTime = recordMetadata.timestamp();
+                long endTime = System.currentTimeMillis();
+                LOGGER.info("record kafka arrive time {}", midTime);
+                LOGGER.info("record receive time {}", endTime);
                 if (e != null) {
                     LOGGER.debug("send2kafka: fail to send msgSize {} of topic {} to kafka {}, ",
                             recordMetadata.serializedValueSize(), recordMetadata.topic(), e);
