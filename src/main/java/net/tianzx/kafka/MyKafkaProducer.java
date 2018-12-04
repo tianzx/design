@@ -60,7 +60,9 @@ public class MyKafkaProducer {
         int msgNum = 10;
         List list = Lists.newArrayList();
         for (int i = 0; i < msgNum; i++) {
-            ProducerRecord pr = new ProducerRecord(topicName, value.getBytes());
+            long startTime = System.currentTimeMillis();
+            ProducerRecord pr = new ProducerRecord(topicName, startTime, value.getBytes());
+            LOGGER.info("record producer send time:...");
             Future<RecordMetadata> future = producer.send(pr, (recordMetadata, e) -> {
                 if (e != null) {
                     LOGGER.debug("send2kafka: fail to send msgSize {} of topic {} to kafka {}, ",
