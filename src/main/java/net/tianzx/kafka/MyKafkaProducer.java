@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
@@ -67,6 +66,7 @@ public class MyKafkaProducer {
                 long midTime = recordMetadata.timestamp();
                 long endTime = System.currentTimeMillis();
                 LOGGER.info("record kafka arrive time {}", midTime);
+
                 LOGGER.info("record receive time {}", endTime);
                 if (e != null) {
                     LOGGER.debug("send2kafka: fail to send msgSize {} of topic {} to kafka {}, ",
