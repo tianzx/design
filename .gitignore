@@ -23,3 +23,11 @@ design.iml
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 out
+
+src/main/resources/config.properties
+target/classes/config.properties
+target/classes/log4j2.xml
+target/generated-sources/
+target/generated-test-sources/
+target/maven-archiver/
+target/maven-status/
