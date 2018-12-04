@@ -57,6 +57,7 @@ public class MyKafkaProducer {
         String topicName = "swc-cvs-nmp-mac-10001-notification";
         String value = "test";
         int msgNum = 10;
+
         List list = Lists.newArrayList();
         for (int i = 0; i < msgNum; i++) {
             long startTime = System.currentTimeMillis();
