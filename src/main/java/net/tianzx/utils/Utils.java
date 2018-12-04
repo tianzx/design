@@ -18,9 +18,6 @@ public class Utils {
 
     private static Properties prop;
 
-    private Utils() throws IOException {
-    }
-
     private static void init() throws IOException {
         String path = Utils.class.getClassLoader().getResource("config.properties").getPath();
         prop = new Properties();
@@ -33,7 +30,7 @@ public class Utils {
         if (null == prop) {
             init();
         }
-        LOGGER.info(prop.stringPropertyNames().toString());
+        LOGGER.info(prop.getProperty(key));
         return prop.getProperty(key);
     }
 

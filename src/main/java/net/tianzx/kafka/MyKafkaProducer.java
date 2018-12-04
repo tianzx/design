@@ -61,18 +61,20 @@ public class MyKafkaProducer {
         List list = Lists.newArrayList();
         for (int i = 0; i < msgNum; i++) {
             long startTime = System.currentTimeMillis();
-            ProducerRecord pr = new ProducerRecord(topicName, startTime, value.getBytes());
+            String nonce = i + "";
+            ProducerRecord pr = new ProducerRecord(topicName, null, startTime, nonce.getBytes(), value.getBytes());
             LOGGER.info("record producer send time {}", startTime);
             Future<RecordMetadata> future = producer.send(pr, (recordMetadata, e) -> {
+                LOGGER.info(String.valueOf(recordMetadata.partition()));
                 long midTime = recordMetadata.timestamp();
                 long endTime = System.currentTimeMillis();
                 LOGGER.info("record kafka arrive time {}", midTime);
-                LOGGER.info("record receive time {}", endTime);
+                LOGGER.info("record receive time {}", endTime - startTime);
                 if (e != null) {
                     LOGGER.debug("send2kafka: fail to send msgSize {} of topic {} to kafka {}, ",
                             recordMetadata.serializedValueSize(), recordMetadata.topic(), e);
                 } else {
-                    System.err.println("fail" + e.getMessage());
+                    LOGGER.info("fail" + e.getMessage());
                     LOGGER.debug("send2kafka: send msg {} of clientId {} to kafka {} success");
                 }
             });
@@ -90,7 +92,11 @@ public class MyKafkaProducer {
             }
         });
         while (true) {
+            long startTime = System.currentTimeMillis();
             Thread.sleep(1000);
+            long endTime = System.currentTimeMillis();
+            LOGGER.info(String.valueOf(endTime - startTime));
+
         }
     }
 }
