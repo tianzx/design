@@ -66,7 +66,6 @@ public class MyKafkaProducer {
                 long midTime = recordMetadata.timestamp();
                 long endTime = System.currentTimeMillis();
                 LOGGER.info("record kafka arrive time {}", midTime);
-
                 LOGGER.info("record receive time {}", endTime);
                 if (e != null) {
                     LOGGER.debug("send2kafka: fail to send msgSize {} of topic {} to kafka {}, ",
