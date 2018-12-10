@@ -33,9 +33,10 @@ public class MyKafkaProducer {
         props.put("max.request.size", 10_485_760);
         props.put("client.id", "msg_api_" + 1);
         props.put("retries", 30);
-        props.put("linger.ms", 100);
-        props.put("retry.backoff.ms", 3000);
-        props.put("request.timeout.ms", 10_000);
+        props.put("linger.ms", 1);
+//        props.put("retry.backoff.ms", 3000);
+//        props.put("max.block.ms", 30000);
+//        props.put("request.timeout.ms", 10);
         props.put("key.serializer", "org.apache.kafka.common.serialization.ByteArraySerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.ByteArraySerializer");
         props.put("security.protocol", "SASL_PLAINTEXT");
@@ -56,19 +57,19 @@ public class MyKafkaProducer {
         Producer<String, String> producer = new KafkaProducer(props);
         String topicName = "swc-cvs-nmp-mac-10001-notification";
         String value = "test";
-        int msgNum = 10;
-
+        int msgNum = 10000;
+        String nonce = "";
         List list = Lists.newArrayList();
         for (int i = 0; i < msgNum; i++) {
             long startTime = System.currentTimeMillis();
-            String nonce = i + "";
+
             ProducerRecord pr = new ProducerRecord(topicName, null, startTime, nonce.getBytes(), value.getBytes());
             LOGGER.info("record producer send time {}", startTime);
             Future<RecordMetadata> future = producer.send(pr, (recordMetadata, e) -> {
                 LOGGER.info(String.valueOf(recordMetadata.partition()));
                 long midTime = recordMetadata.timestamp();
                 long endTime = System.currentTimeMillis();
-                LOGGER.info("record kafka arrive time {}", midTime);
+//                LOGGER.info("record kafka arrive time {}", midTime);
                 LOGGER.info("record receive time {}", endTime - startTime);
                 if (e != null) {
                     LOGGER.debug("send2kafka: fail to send msgSize {} of topic {} to kafka {}, ",

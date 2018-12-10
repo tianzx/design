@@ -25,6 +25,7 @@ hs_err_pid*
 out
 
 src/main/resources/config.properties
+src/main/resources/test.file
 target/classes/config.properties
 target/classes/log4j2.xml
 target/generated-sources/
