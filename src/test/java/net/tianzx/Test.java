@@ -1,5 +1,10 @@
 package net.tianzx;
 
+import net.tianzx.utils.Utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
@@ -10,6 +15,8 @@ import java.util.concurrent.Semaphore;
  * Email: zixuan.tian@nio.com
  */
 public class Test {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Test.class);
+
     Semaphore semaphore = new Semaphore(2);
 
     ExecutorService service = Executors.newFixedThreadPool(10);
@@ -33,13 +40,12 @@ public class Test {
             semaphore.release();
         }
     }
-    public static void main(String[] args) throws InterruptedException {
-        Test test = new Test();
-        MyTask myTask = new MyTask( test.semaphore);
-        for(int i=0;i<4;i++) {
-            test.semaphore.acquire(1);
-            test.service.submit(myTask);
-        }
-        test.service.shutdown();
+
+    public static void main(String[] args) throws InterruptedException, IOException {
+        String saslConfigFormat = "org.apache.kafka.common.security.plain.PlainLoginModule required username=\"%s\" password=\"%s\";";
+        String saslUserName = Utils.getConfig("saslUserName");
+        String saslPassword = Utils.getConfig("saslPassword");
+        String saslConfig = String.format(saslConfigFormat, saslUserName, saslPassword);
+        LOGGER.error(saslConfig);
     }
 }

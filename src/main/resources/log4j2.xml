@@ -24,13 +24,15 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Root level="info"> <!-- 全局配置 -->
-            <!--<AppenderRef ref="Console"/>-->
-            <AppenderRef ref="RollingFile"/>
-        </Root>
+        <!--<Root level="info"> &lt;!&ndash; 全局配置 &ndash;&gt;-->
+        <!--&lt;!&ndash;<AppenderRef ref="Console"/>&ndash;&gt;-->
+        <!--<AppenderRef ref="RollingFile"/>-->
+        <!--</Root>-->
         <!-- 为sql语句配置特殊的Log级别，方便调试 -->
         <Logger name="net.tianzx" level="info" additivity="false">
+            <!--<AppenderRef ref="RollingFile"/>-->
             <AppenderRef ref="Console"/>
         </Logger>
+        <logger name="org.apache.kafka" level="INFO"/>
     </Loggers>
 </Configuration>
