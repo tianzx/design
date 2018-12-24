@@ -26,28 +26,29 @@ public class Counter {
                 .setDaemon(true)
                 .build();
         final ExecutorService service = Executors.newFixedThreadPool(10, threadFactory);
-        final ExecutorService service2 = Executors.newFixedThreadPool(10, threadFactory);
+//        final ExecutorService service2 = Executors.newFixedThreadPool(10, threadFactory);
         for (int i = 0; i <= 199; i++) {
             service.submit(() -> {
                 add();
             });
         }
-        for (int i = 0; i <= 99; i++) {
-            service2.submit(() -> {
-                sub();
-            });
-
-        }
+//        for (int i = 0; i <= 99; i++) {
+//            service2.submit(() -> {
+//                sub();
+//            });
+//
+//        }
         while (true) {
             Thread.sleep(1000);
-            long i = counter.get("10001");
-            LOGGER.info("num {}", i);
+//            long i = counter.get("10001");
+//
+//            LOGGER.info("num {}", i);
         }
     }
 
     private static void add() {
         long i = counter.incrementAndGet("10001");
-//        LOGGER.info("num {}", i);
+        LOGGER.info("num {}", i);
     }
 
     private static void sub() {
