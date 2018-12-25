@@ -14,7 +14,6 @@ import java.util.Properties;
 /**
  * Author: tianzx
  * Date: 2018-12-03  16:39
- * Email: zixuan.tian@nio.com
  */
 public class MyKafkaConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyKafkaConsumer.class);

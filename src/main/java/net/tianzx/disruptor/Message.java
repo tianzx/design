@@ -3,7 +3,6 @@ package net.tianzx.disruptor;
 /**
  * Author: tianzx
  * Date: 2018/11/15  5:43 PM
- * Email: zixuan.tian@nio.com
  */
 public class Message {
     private long id;

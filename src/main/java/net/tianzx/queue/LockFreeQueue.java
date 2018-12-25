@@ -5,7 +5,6 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * Author: tianzx
  * Date: 2018-12-15  18:46
- * Email: zixuan.tian@nio.com
  */
 public class LockFreeQueue<T> {
 

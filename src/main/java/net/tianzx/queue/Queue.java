@@ -3,7 +3,6 @@ package net.tianzx.queue;
 /**
  * Author: tianzx
  * Date: 2018-12-15  14:57
- * Email: zixuan.tian@nio.com
  */
 public class Queue {
 

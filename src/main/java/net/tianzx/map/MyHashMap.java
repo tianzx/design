@@ -6,7 +6,6 @@ import java.util.List;
 /**
  * Author: tianzx
  * Date: 2018/11/21  9:22 PM
- * Email: zixuan.tian@nio.com
  */
 public class MyHashMap<K, V> {
 

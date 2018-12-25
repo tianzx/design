@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * Author: tianzx
  * Date: 2018/11/20  6:20 PM
- * Email: zixuan.tian@nio.com
  */
 public class BinaryTree {
     //input [1,null,2,3]

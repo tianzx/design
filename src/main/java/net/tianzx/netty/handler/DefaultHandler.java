@@ -8,7 +8,6 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 /**
  * Author: tianzx
  * Date: 2018-11-23  22:27
- * Email: zixuan.tian@nio.com
  */
 @ChannelHandler.Sharable
 public class DefaultHandler extends ChannelInboundHandlerAdapter {

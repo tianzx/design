@@ -5,7 +5,6 @@ import com.lmax.disruptor.EventFactory;
 /**
  * Author: tianzx
  * Date: 2018/11/15  5:56 PM
- * Email: zixuan.tian@nio.com
  */
 public class MessageEventFactory implements EventFactory<MessageEvent> {
     @Override

@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Author: tianzx
  * Date: 2018/10/17  5:26 PM
- * Email: zixuan.tian@nio.com
  */
 public class Server {
 

@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Author: tianzx
  * Date: 2018-11-23  22:20
- * Email: zixuan.tian@nio.com
  */
 public class InflightResender extends ChannelDuplexHandler {
 

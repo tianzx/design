@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Author: tianzx
  * Date: 2018/10/29  10:45 PM
- * Email: zixuan.tian@nio.com
  */
 public class Mylock {
     private static Unsafe unsafe;

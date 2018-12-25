@@ -7,7 +7,6 @@ import java.nio.ByteBuffer;
 /**
  * Author: tianzx
  * Date: 2018/11/15  7:49 PM
- * Email: zixuan.tian@nio.com
  */
 public class MessageEventProducer {
 

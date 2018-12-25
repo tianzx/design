@@ -17,7 +17,6 @@ import java.util.concurrent.ThreadFactory;
 /**
  * Author: tianzx
  * Date: 2018-12-24  20:33
- * Email: zixuan.tian@nio.com
  */
 public class FileIO {
     private static final Logger LOGGER = LoggerFactory.getLogger(FileIO.class);

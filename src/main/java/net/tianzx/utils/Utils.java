@@ -14,7 +14,6 @@ import java.util.Properties;
 /**
  * Author: tianzx
  * Date: 2018-12-03  20:38
- * Email: zixuan.tian@nio.com
  */
 public class Utils {
 

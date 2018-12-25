@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Author: tianzx
  * Date: 2018/10/19  5:51 PM
- * Email: zixuan.tian@nio.com
  */
 public class Client {
     private static final int MAX_RETRY = 5;

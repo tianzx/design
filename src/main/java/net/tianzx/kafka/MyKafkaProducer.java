@@ -19,7 +19,6 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Author: tianzx
  * Date: 2018-12-03  14:35
- * Email: zixuan.tian@nio.com
  */
 public class MyKafkaProducer {
 

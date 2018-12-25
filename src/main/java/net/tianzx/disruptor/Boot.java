@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Author: tianzx
  * Date: 2018/11/15  10:21 PM
- * Email: zixuan.tian@nio.com
  */
 public class Boot {
     public static void main(String[] args) {
